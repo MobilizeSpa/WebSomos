@@ -128,8 +128,8 @@ def sign(envelope, keyfile, certfile):
     logging.info(keyfile)
     logging.info(xmlsec.KeyFormat.PEM)
     logging.info('FORMAAAAAATOS')
-    key = xmlsec.Key.from_memory(keyfile, xmlsec.KeyFormat.PEM)
-    key.load_cert_from_memory(certfile, xmlsec.KeyFormat.PEM)
+    key = xmlsec.Key.from_memory(keyfile, 2)
+    key.load_cert_from_memory(certfile, 2)
 
     # Insert the Signature node in the wsse:Security header.
     header = doc.find(ns(SOAP_NS, 'Header'))
