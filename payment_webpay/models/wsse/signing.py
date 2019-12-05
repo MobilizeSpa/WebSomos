@@ -125,6 +125,7 @@ def sign(envelope, keyfile, certfile):
     x509_data.append(x509_certificate)
 
     # Load the signing key and certificate.
+    logging.info('ANTEEEEEEEEEEEEEEEEEEEES')
     logging.info(keyfile)
     logging.info(xmlsec.KeyFormat.PEM)
     logging.info(xmlsec)
