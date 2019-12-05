@@ -144,8 +144,9 @@ class WebpayController(http.Controller):
         logging.info('POOOOOOOOOOOOOOOOOOOOOOST')
         logging.info(post)  
         acquirer = request.env['payment.acquirer'].browse(acquirer_id)
+        logging.info(acquirer)
         result = acquirer.initTransaction(post)
-        logging.info(result)
+        
         urequest = pool.request(    
                                 'GET',
                                 result['url'], 

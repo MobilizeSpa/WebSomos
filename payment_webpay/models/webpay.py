@@ -182,6 +182,8 @@ class PaymentAcquirerWebpay(models.Model):
 
         init.transactionDetails.append(detail)
         init.wPMDetail = client.factory.create('wpmDetailInput')
+        logging.info('INIIIIIT')
+        logging.info(init)
         wsInitTransactionOutput = client.service.initTransaction(init)
         return wsInitTransactionOutput
 
