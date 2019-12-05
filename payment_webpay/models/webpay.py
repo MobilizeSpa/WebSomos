@@ -123,8 +123,8 @@ class PaymentAcquirerWebpay(models.Model):
     @api.multi
     def webpay_get_form_action_url(self,):
         base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
-        logging.inf('WEBPAY BASEEEEEEEEEEEEE')
-        logging.info(base_url)
+        logging.info('baseeeeeeeeeeeeee')
+        logging.info(base_url)  
         return base_url + '/payment/webpay/redirect'
 
     def get_private_key(self):
@@ -139,8 +139,6 @@ class PaymentAcquirerWebpay(models.Model):
     def get_client(self,):
         transport = HttpTransport()
         wsse = Security()
-        logging.info('seguridaaaaad')
-        logging.info(wsse)
         return Client(
             self._get_webpay_urls(),
             transport=transport,
@@ -184,9 +182,7 @@ class PaymentAcquirerWebpay(models.Model):
 
         init.transactionDetails.append(detail)
         init.wPMDetail = client.factory.create('wpmDetailInput')
-        logging.info(client)
         wsInitTransactionOutput = client.service.initTransaction(init)
-        logging.info('returrrrrn')
         return wsInitTransactionOutput
 
 
