@@ -10,6 +10,7 @@ module.
 """
 from lxml import etree
 import xmlsec
+import logging
 
 from .constants import DS_NS, SOAP_NS, WSSE_NS, WSU_NS
 from .exceptions import SignatureVerificationFailed
@@ -124,6 +125,9 @@ def sign(envelope, keyfile, certfile):
     x509_data.append(x509_certificate)
 
     # Load the signing key and certificate.
+    logging.info(keyfile)
+    logging.info(xmlsec.KeyFormat.PEM)
+    logging.info('FORMAAAAAATOS')
     key = xmlsec.Key.from_memory(keyfile, xmlsec.KeyFormat.PEM)
     key.load_cert_from_memory(certfile, xmlsec.KeyFormat.PEM)
 
