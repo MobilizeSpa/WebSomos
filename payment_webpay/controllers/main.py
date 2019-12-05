@@ -141,8 +141,11 @@ class WebpayController(http.Controller):
     @http.route(['/payment/webpay/redirect'],  type='http', auth='public', methods=["POST"], csrf=False, website=True)
     def redirect_webpay(self, **post):
         acquirer_id = int(post.get('acquirer_id'))
+        logging.info('POOOOOOOOOOOOOOOOOOOOOOST')
+        logging.info(post)  
         acquirer = request.env['payment.acquirer'].browse(acquirer_id)
         result = acquirer.initTransaction(post)
+        logging.info(result)
         urequest = pool.request(    
                                 'GET',
                                 result['url'], 
@@ -153,6 +156,5 @@ class WebpayController(http.Controller):
         values = {
             'webpay_redirect': resp,
         }
-        logging.info('VALOOOOOORES')
-        logging.info(values)  
+        
         return request.render('payment_webpay.webpay_redirect', values)
