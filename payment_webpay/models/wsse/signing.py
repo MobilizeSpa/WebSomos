@@ -130,7 +130,7 @@ def sign(envelope, keyfile, certfile):
     logging.info(xmlsec.KeyFormat.PEM)
     logging.info(xmlsec)
     logging.info(xmlsec.KeyFormat)
-    logging.info(doc)
+    logging.info(doc.find(ns(SOAP_NS, 'Header')))
     logging.info('FORMAAAAAATOS')
     key = xmlsec.Key.from_memory(keyfile, xmlsec.KeyFormat.PEM)
     key.load_cert_from_memory(certfile, xmlsec.KeyFormat.PEM)
