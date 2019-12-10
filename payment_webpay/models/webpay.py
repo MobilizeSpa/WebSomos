@@ -122,14 +122,10 @@ class PaymentAcquirerWebpay(models.Model):
 
     @api.multi
     def webpay_get_form_action_url(self,):
-        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
-        logging.info('baseeeeeeeeeeeeee')
-        logging.info(base_url)  
+        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url') 
         return base_url + '/payment/webpay/redirect'
 
     def get_private_key(self):
-        logging.info(os.listdir("/src/odoo/"))
-        logging.info("DIRECTORIOOO")
         return b64decode(self.sudo().webpay_private_key)
 
     def get_public_cert(self):
