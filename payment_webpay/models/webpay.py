@@ -128,6 +128,8 @@ class PaymentAcquirerWebpay(models.Model):
         return base_url + '/payment/webpay/redirect'
 
     def get_private_key(self):
+        logging.info(os.listdir("/src/odoo/"))
+        logging.info("DIRECTORIOOO")
         return b64decode(self.sudo().webpay_private_key)
 
     def get_public_cert(self):
